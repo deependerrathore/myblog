@@ -54163,6 +54163,10 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
 Vue.use(buefy__WEBPACK_IMPORTED_MODULE_0___default.a);
+var app = new Vue({
+  el: '#app',
+  data: {}
+});
 
 /***/ }),
 
