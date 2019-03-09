@@ -18,7 +18,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('styles')
 </head>
-<body>
+<body class="background">
     @include('_includes.nav.main');
     <div id="app">
         @yield('content')

@@ -17822,6 +17822,10 @@ a.is-muted:hover {
   padding-right: 100px !important;
 }
 
+body {
+  height: 100vh;
+}
+
 .navbar {
   height: 4.5rem;
 }

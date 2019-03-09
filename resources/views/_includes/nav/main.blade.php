@@ -33,10 +33,15 @@
                                 Settings
                             </a>
                             <hr class="navbar-divider">
-                            <a class="navbar-item">
+                            <a class="navbar-item"  
+                            href="{{route('logout')}}"  
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <span class="icon m-r-5"><i class="fa fa-fw fa-sign-out"></i></span>
                                 Logout
                             </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                             </div>
                     
                         </div>
