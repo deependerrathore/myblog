@@ -33,14 +33,14 @@
                         <a href="" class="navbar-item is-tab is-hidden-mobile">Share</a>
                     </div>
                     <div class="navbar-end">
-                        @if(!Auth::guest()) 
-                            <a href="#" class="navbar-item is-tab">Log In</a>
-                            <a href="#" class="navbar-item is-tab">Join Us</a>
+                        @if(Auth::guest()) 
+                            <a href="{{route('login')}}" class="navbar-item is-tab">Log In</a>
+                            <a href="{{route('register')}}" class="navbar-item is-tab">Join Us</a>
                         @else
                             <div class="navbar-item is-tab has-dropdown is-hoverable">
                                 <a class="navbar-link">
                                 Hey Deep 
-                            </a>
+                                </a>
                             
                             <div class="navbar-dropdown">
                                 <a class="navbar-item">
@@ -61,7 +61,7 @@
                                     Logout
                                 </a>
                                 </div>
-                            </div>
+                        
                             </div>
                         @endif
                     </div>
