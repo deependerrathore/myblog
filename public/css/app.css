@@ -3482,7 +3482,7 @@ th {
 }
 
 html {
-  background-color: white;
+  background-color: whitesmoke;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -17831,9 +17831,22 @@ body {
 }
 
 .side-menu {
-  position: fixed;
-  height: 100vh;
+  position: absolute;
+  top: 4rem;
+  bottom: 0;
   width: 250px;
   overflow-y: auto;
+  background: white;
+}
+
+.management-area {
+  position: absolute;
+  top: 4rem;
+  left: 250px;
+  right: 0;
+}
+
+.flex-container {
+  margin: 10px 25px;
 }
 
