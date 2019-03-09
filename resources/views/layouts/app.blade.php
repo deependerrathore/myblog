@@ -39,7 +39,7 @@
                         @else
                             <div class="navbar-item is-tab has-dropdown is-hoverable">
                                 <a class="navbar-link">
-                                Hey Deep 
+                                Hey {{Auth::user()->name}} 
                                 </a>
                             
                             <div class="navbar-dropdown">

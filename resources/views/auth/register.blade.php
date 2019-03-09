@@ -8,37 +8,22 @@
                 <h1 class="title">Create an account</h1>
                 <form action="{{route('register')}}" method="POST" role="form">
                     {{csrf_field()}}
+                    
                     <div class="field">
-                        <label for="fname" class="label">First Name</label>
-                        <div class="control">
-                            <input 
-                            class="input {{$errors->has('fname') ? 'is-danger' : ''}}" 
-                            type="text" name="fname" 
-                            id="fname" 
-                            placeholder="First Name" 
-                            value="{{old('fname')}}"
-                            required
-                            />
-                        </div>
-                        @if($errors->has('fname'))
-                        <p class="help is-danger">{{$errors->first('fname')}}</p>
-                        @endif
-                    </div>
-                    <div class="field">
-                        <label for="lname" class="label">Last Name</label>
+                        <label for="name" class="label">Name</label>
                         <div class="control">
                         <input 
-                        class="input {{$errors->has('lname') ? 'is-danger' : ''}}" 
+                        class="input {{$errors->has('name') ? 'is-danger' : ''}}" 
                         type="text" 
-                        name="lname" 
-                        id="lname" 
-                        placeholder="Last Name" 
-                        value="{{old('lname')}}"
+                        name="name" 
+                        id="name" 
+                        placeholder="Your Name" 
+                        value="{{old('name')}}"
                         required
                         />
                         </div>
-                        @if($errors->has('lname'))
-                        <p class="help is-danger">{{$errors->first('lname')}}</p>
+                        @if($errors->has('name'))
+                        <p class="help is-danger">{{$errors->first('name')}}</p>
                         @endif
                     </div>
                     <div class="field">
