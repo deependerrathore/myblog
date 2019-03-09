@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar has-shadow">
         <div class="container">
             <div class="navbar-brand">
                 <a class="navbar-item" href="https://bulma.io">MY BLOG</a>
@@ -28,9 +28,9 @@
                                 <span class="icon m-r-5"><i class="fa fa-fw fa-bell"></i></span>
                                 Notifications
                             </a>
-                            <a class="navbar-item">
+                            <a class="navbar-item" href="{{route('manage.dashboard')}}">
                                 <span class="icon m-r-5"><i class="fa fa-fw fa-cog"></i></span>
-                                Settings
+                                Manage
                             </a>
                             <hr class="navbar-divider">
                             <a class="navbar-item"  

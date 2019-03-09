@@ -3482,7 +3482,7 @@ th {
 }
 
 html {
-  background-color: whitesmoke;
+  background-color: white;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
@@ -17828,5 +17828,12 @@ body {
 
 .navbar {
   height: 4.5rem;
+}
+
+.side-menu {
+  position: fixed;
+  height: 100vh;
+  width: 250px;
+  overflow-y: auto;
 }
 

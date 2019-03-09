@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>MY BLOG - Management</title>
 
     
     <!-- Fonts -->
@@ -22,10 +22,12 @@
 
     @include('_includes.nav.main')
 
+    @include('_includes.nav.manage')
+    
     <div id="app">
         @yield('content')
     </div>
-    
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     @yield('scripts')
