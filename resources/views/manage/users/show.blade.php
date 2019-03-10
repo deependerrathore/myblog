@@ -13,23 +13,27 @@
             </div>
         </div>
         <hr class="m-t-10">
-        <div class="columns">
-            <div class="column">
-                <div class="field">
-                    <label for="name" class="label">Name</label>
-                    <div class="control">
-                        {{$user->name}}
+        <div class="card">
+                <div class="card-content">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="field">
+                                <label for="name" class="label">Name</label>
+                                <div class="control">
+                                    {{$user->name}}
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="email" class="label">Email</label>
+                                <div class="control">
+                                    {{$user->email}}
+                                </div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
-                <div class="field">
-                    <label for="email" class="label">Email</label>
-                    <div class="control">
-                        {{$user->email}}
-                    </div>
-                </div>
-                
             </div>
-        </div>
     </div>
 @endsection
 

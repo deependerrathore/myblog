@@ -27,8 +27,8 @@
                         @endif
                     </div>
                     <div class="field">
-                            <b-checkbox name="remember">Remember Me</b-checkbox>
-                        </div>
+                        <b-checkbox name="remember">Remember Me</b-checkbox>
+                    </div>
                     <div class="control">
                         <button class="button is-success  m-t-30  is-outlined is-fullwidth">Login</button>
                     </div>
@@ -38,4 +38,14 @@
         <h5 class="has-text-centered m-t-20"><a href="{{route('password.request')}}" class="is-muted">Forgot your password?</a></h5>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+window.addEventListener('load',function(){
+    new Vue({
+        el:"#app",
+    })
+})
+</script>
 @endsection
