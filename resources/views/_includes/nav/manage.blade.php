@@ -13,10 +13,10 @@
         <ul class="menu-list">
             <li><a href="{{route('users.index')}}">Manage Users</a></li>
             <li>
-                <a>Manage Roles &amp; Permission</a>
+                <a href="{{route('permissions.index')}}">Manage Roles &amp; Permission</a>
                 <ul>
                     <li><a>Roles</a></li>
-                    <li><a>Permission</a></li>
+                    <li><a href="{{route('permissions.index')}}">Permission</a></li>
                     <li><a>Add a member</a></li>
                 </ul>
             </li>
