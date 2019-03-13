@@ -15,7 +15,7 @@
             <li>
                 <a href="{{route('permissions.index')}}">Manage Roles &amp; Permission</a>
                 <ul>
-                    <li><a>Roles</a></li>
+                    <li><a href="{{route('roles.index')}}">Roles</a></li>
                     <li><a href="{{route('permissions.index')}}">Permission</a></li>
                     <li><a>Add a member</a></li>
                 </ul>

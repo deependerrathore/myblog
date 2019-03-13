@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Role;
+use App\Permission;
+use Session;
 class RoleController extends Controller
 {
     /**
@@ -12,8 +14,8 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   $roles = Role::all();
+        return view('manage.roles.index')->withRoles($roles);
     }
 
     /**
@@ -22,8 +24,9 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $permissions = Permission::all();
+        return view('manage.roles.create')->withPermissions($permissions);
     }
 
     /**
@@ -33,8 +36,23 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $this->validate($request,[
+            'display_name' => 'required|max:255',
+            'name' => 'required|max:255|unique:roles,name|alpha-dash',
+            'description' => 'sometimes|max:255'
+            ]);
+        $role = new Role();
+        $role->display_name = $request->display_name;
+        $role->name = $request->name;
+        $role->description = $request->description;
+        $role->save();
+            
+        if($request->permissions){
+            $role->syncPermissions(explode(',',$request->permissions));
+        }
+        Session::flash('success','Successfully created new ' . $role->display_name . ' role in database');
+        return redirect()->route('roles.show',$role->id);
     }
 
     /**
@@ -45,9 +63,10 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        return view('manage.roles.show')->withRole($role);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -56,7 +75,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::where('id',$id)->with('permissions')->first();
+        $permissions = Permission::all();
+        return view('manage.roles.edit')->withRole($role)->withPermissions($permissions);
     }
 
     /**
@@ -68,7 +89,20 @@ class RoleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'display_name' => 'required|max:255',
+            'description' => 'sometimes|max:255'
+        ]);
+        $role = Role::findOrFail($id);
+        $role->display_name = $request->display_name;
+        $role->description = $request->description;
+        $role->save();
+
+        if($request->permissions){
+            $role->syncPermissions(explode(',',$request->permissions));
+        }
+        Session::flash('success','Successfully updated the ' . $role->display_name . ' role in database');
+        return redirect()->route('roles.show',$id);
     }
 
     /**
