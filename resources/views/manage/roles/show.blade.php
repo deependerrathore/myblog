@@ -20,6 +20,7 @@
                     <div class="media-content">
                         <div class="content">
                             <h2 class="title">Permission:</h2>
+                            {{$role->permissions->count() == 0 ? 'There is no permission has been assigned to this role.': ''}}
                             <ul>
                                 @foreach ($role->permissions as $r)
                                     <li>{{$r->display_name}}  <em>({{$r->description}})</em></li>

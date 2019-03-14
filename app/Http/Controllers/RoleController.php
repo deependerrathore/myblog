@@ -100,6 +100,9 @@ class RoleController extends Controller
 
         if($request->permissions){
             $role->syncPermissions(explode(',',$request->permissions));
+        }else{
+            $per = new Permission();
+            $role->detachPermission($per);
         }
         Session::flash('success','Successfully updated the ' . $role->display_name . ' role in database');
         return redirect()->route('roles.show',$id);
