@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -77,10 +78,10 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::where('id',$id)->with('roles')->first();
         return view('manage.users.show')->withUser($user);
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -88,9 +89,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $user = User::findOrFail($id);
-        return view('manage.users.edit')->withUser($user);
+    {   $roles = Role::all();
+        $user = User::where('id',$id)->with('roles')->first();
+        return view('manage.users.edit')->withUser($user)->withRoles($roles);
     }
 
     /**
@@ -102,6 +103,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //dd($request);
         $this->validate($request,[
             'name' => 'required|max:255',
             'email' => 'required|email|unique:users,email,'.$id
@@ -122,13 +124,21 @@ class UserController extends Controller
             $user->password = Hash::make($request->password); 
         }
 
-        if($user->save()){
-            return redirect()->route('users.show',$id);
+        $user->save();
+        if($request->roles == null){
+            $user->syncRoles();
         }else{
-            Session::flash('error','There was a problem while saving the data into database.Please try again.');
-            redirect()->route('users.edit',$id);
-            
+            $user->syncRoles(explode(',',$request->roles));
         }
+        return redirect()->route('users.show',$id);
+ 
+        // if($user->save()){
+        //     return redirect()->route('users.show',$id);
+        // }else{
+        //     Session::flash('error','There was a problem while saving the data into database.Please try again.');
+        //     redirect()->route('users.edit',$id);
+            
+        // }
     }
 
     /**

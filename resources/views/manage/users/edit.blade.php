@@ -10,9 +10,9 @@
         <hr class="m-t-10">
         <div class="card">
             <div class="card-content">
-                <div class="columns">
-                    <div class="column">
-                        <form action="{{route('users.update', $user->id)}}" method="post">
+                <form action="{{route('users.update', $user->id)}}" method="post">
+                    <div class="columns">
+                        <div class="column">
                             {{method_field('PUT')}}
                             {{csrf_field()}}
                             <div class="field">
@@ -59,6 +59,23 @@
                                 </div>
                             </div>
                             
+                            
+        
+
+                        </div> <!--end of the first .column-->
+                        <div class="column">
+                            <label for="roles" class="label">Roles:</label>
+                            <input type="hidden" :value="roleSelected" name="roles"/>
+
+                            @foreach ($roles as $role)
+                            <div class="field">
+                                <b-checkbox :native-value="{{$role->id}}" v-model="roleSelected">{{$role->display_name}} ({{$role->description}})</b-checkbox>
+                            </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="columns">
+                        <div class="column">
                             <div class="field is-grouped">
                                 <div class="control">
                                     <button class="button is-primary">Edit User</button>
@@ -67,10 +84,9 @@
                                     <a class="button is-text" href="{{route('users.index')}}">Cancel</a>
                                 </div>
                             </div>
-        
-                        </form>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -83,7 +99,8 @@
             el: '#app',
             data:{
                 auto_generate:true,
-                passwordOptions: 'keep'
+                passwordOptions: 'keep',
+                roleSelected:{!! $user->roles->pluck('id') !!},
             }
         });
     });
