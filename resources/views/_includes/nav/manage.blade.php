@@ -22,15 +22,11 @@
             <li><a>Authentication</a></li>
         </ul>
         <p class="menu-label">
-            Transactions
+            Content
         </p>
         <ul class="menu-list">
             <li>
-                <a class="has-submenu">Example Accordians</a>
-                <ul class="submenu">
-                    <li><a href="{{route('roles.index')}}">Roles</a></li>
-                    <li><a href="{{route('permissions.index')}}">Permission</a></li>
-                </ul>
+                <a class="has-submenu {{Nav::isResource('posts',2)}}" href="{{route('posts.index')}}">Blog Posts</a>
             </li>
             <li><a>Authentication</a></li>
         </ul>
