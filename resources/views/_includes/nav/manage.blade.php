@@ -4,19 +4,19 @@
             General
         </p>
         <ul class="menu-list">
-            <li><a href="">Dashboard</a></li>
+            <li><a href="{{route('manage.dashboard')}}" class="{{Nav::isRoute('manage.dashboard')}}">Dashboard</a></li>
             <li><a>Customers</a></li>
         </ul>
         <p class="menu-label">
             Administration
         </p>
         <ul class="menu-list">
-            <li><a href="{{route('users.index')}}">Manage Users</a></li>
+            <li><a href="{{route('users.index')}}" class="{{Nav::isResource('users')}}">Manage Users</a></li>
             <li>
-                <a class="has-submenu">Manage Roles &amp; Permission</a>
-                <ul class="submenu">
-                    <li><a href="{{route('roles.index')}}">Roles</a></li>
-                    <li><a href="{{route('permissions.index')}}">Permission</a></li>
+                <a class="has-submenu {{ Nav::hasSegment(['roles','permissions'], 2) }}">Manage Roles &amp; Permission</a>
+                <ul class="submenu ">
+                    <li><a href="{{route('roles.index')}}"  class="{{Nav::isResource('roles')}}">Roles</a></li>
+                    <li><a href="{{route('permissions.index')}}"  class="{{Nav::isResource('permissions')}}">Permission</a></li>
                 </ul>
             </li>
             <li><a>Authentication</a></li>

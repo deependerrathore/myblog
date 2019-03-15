@@ -43870,6 +43870,13 @@ if (token) {
 var accordians = document.getElementsByClassName('has-submenu');
 
 for (var i = 0; i < accordians.length; i++) {
+  if (accordians[i].classList.contains('is-active')) {
+    var submenu = accordians[i].nextElementSibling;
+    submenu.style.maxHeight = submenu.scrollHeight + "px";
+    submenu.style.marginTop = "0.75em";
+    submenu.style.marginBottom = "0.75em";
+  }
+
   accordians[i].onclick = function () {
     this.classList.toggle('is-active');
     var submenu = this.nextElementSibling;
