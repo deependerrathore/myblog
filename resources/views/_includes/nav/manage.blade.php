@@ -13,11 +13,10 @@
         <ul class="menu-list">
             <li><a href="{{route('users.index')}}">Manage Users</a></li>
             <li>
-                <a href="{{route('permissions.index')}}">Manage Roles &amp; Permission</a>
-                <ul>
+                <a class="has-submenu">Manage Roles &amp; Permission</a>
+                <ul class="submenu">
                     <li><a href="{{route('roles.index')}}">Roles</a></li>
                     <li><a href="{{route('permissions.index')}}">Permission</a></li>
-                    <li><a>Add a member</a></li>
                 </ul>
             </li>
             <li><a>Authentication</a></li>
@@ -25,6 +24,16 @@
         <p class="menu-label">
             Transactions
         </p>
+        <ul class="menu-list">
+            <li>
+                <a class="has-submenu">Example Accordians</a>
+                <ul class="submenu">
+                    <li><a href="{{route('roles.index')}}">Roles</a></li>
+                    <li><a href="{{route('permissions.index')}}">Permission</a></li>
+                </ul>
+            </li>
+            <li><a>Authentication</a></li>
+        </ul>
         <ul class="menu-list">
             <li><a>Payments</a></li>
             <li><a>Transfers</a></li>

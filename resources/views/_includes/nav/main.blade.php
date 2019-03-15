@@ -10,7 +10,7 @@
                     <a href="" class="navbar-item is-tab is-hidden-mobile">Share</a>
                 </div>
                 <div class="navbar-end">
-                    @if(Auth::guest()) 
+                    @guest
                         <a href="{{route('login')}}" class="navbar-item is-tab">Log In</a>
                         <a href="{{route('register')}}" class="navbar-item is-tab">Join Us</a>
                     @else
@@ -45,7 +45,7 @@
                             </div>
                     
                         </div>
-                    @endif
+                    @endguest
                 </div>
             </div>
         </div>
