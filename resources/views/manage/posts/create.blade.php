@@ -15,11 +15,11 @@
         <div class="columns">
             <div class="column is-three-quarters">
                 <b-field>
-                    <b-input placeholder="Post Title" type="text"></b-input>
+                    <b-input placeholder="Post Title" type="text" v-model="title"></b-input>
                 </b-field>
-                <div>
-                    {{url('/blog')}}
-                </div>
+                <b-field>
+                    <slug-widget url="{{url('/')}}" subdirectory="blog" :title="title" @slug-changed="updatedSlug"></slug-widget>
+                </b-field>
 
                 <b-field>
                     <b-input type="textarea"
@@ -75,9 +75,15 @@
     window.addEventListener('load',function(){
         var app = new Vue({
             el:'#app',
-            data:{
-    
-            }
+            data:{ 
+                title: '',
+                slug: '',
+            },
+            methods: {
+                updatedSlug: function(val){
+                    this.slug = val;
+                }
+            },
         });
     });
 </script>
