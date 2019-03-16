@@ -26,7 +26,7 @@
         </p>
         <ul class="menu-list">
             <li>
-                <a class="has-submenu {{Nav::isResource('posts',2)}}" href="{{route('posts.index')}}">Blog Posts</a>
+                <a href="{{route('posts.index')}}" class="{{Nav::isResource('posts')}}" >Blog Posts</a>
             </li>
             <li><a>Authentication</a></li>
         </ul>
