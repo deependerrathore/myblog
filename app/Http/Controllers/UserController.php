@@ -28,8 +28,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('manage.users.create');
+    {   $roles = Role::all();
+        return view('manage.users.create')->withRoles($roles);
     }
 
     /**
@@ -61,13 +61,16 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($password);
+        $user->save();
         
-        if($user->save()){
-            return redirect()->route('users.show',$user->id);
+        if($request->roles == null){
+            $user->syncRoles();
         }else{
-            Session::flash('danger','Sorry a problem occured while creating a user.');
-            return redirect()->route('users.create');
+            $user->syncRoles(explode(',',$request->roles));
         }
+        
+        return redirect()->route('users.show',$user->id);
+        
     }
 
     /**

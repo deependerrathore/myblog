@@ -10,10 +10,10 @@
         <hr class="m-t-10">
         <div class="card">
             <div class="card-content">
-                <div class="columns">
-                    <div class="column">
-                        <form action="{{route('users.store')}}" method="post">
-                            {{csrf_field()}}
+                <form action="{{route('users.store')}}" method="post">
+                    <div class="columns">
+                        {{csrf_field()}}
+                        <div class="column">
                             <div class="field">
                                 <label for="name" class="label">Name</label>
                                 <div class="control">
@@ -47,10 +47,19 @@
                                     <a class="button is-text" href="{{route('users.index')}}">Cancel</a>
                                 </div>
                             </div>
-        
-                        </form>
+                        </div>
+                        <div class="column">
+                            <label for="roles" class="label">Roles:</label>
+                            <input type="hidden" name="roles" :value="rolesSelected" />
+                    
+                            @foreach ($roles as $role)
+                            <div class="field">
+                                <b-checkbox v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+                            </div>
+                            @endforeach
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -63,6 +72,8 @@
             el: '#app',
             data:{
                 auto_generate:true,
+                rolesSelected: [{!! old('roles') ? old('roles') : '' !!}]
+
             }
         });
     });
